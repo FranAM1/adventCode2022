@@ -1,7 +1,7 @@
-const fs = require("fs").promises;
+import {readFile} from 'fs/promises'
 
-async function main(part) {
-  const data = await fs.readFile("input.txt", "utf8")
+async function main(part:1|2) {
+  const data = await readFile("input.txt", "utf8")
 
   const array = data.split("\n\n")
 
@@ -11,6 +11,7 @@ async function main(part) {
     })
   })
 
+  // PARTE 1
   if (part == 1) {
     let mostCalories = 0;
 
@@ -25,6 +26,7 @@ async function main(part) {
 
     console.log(mostCalories);
 
+  // PARTE 2
   }else{
     let mostCalories = [0, 0, 0];
 
