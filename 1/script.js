@@ -1,5 +1,3 @@
-const { maxHeaderSize } = require("http");
-
 const fs = require("fs").promises;
 
 async function main(part) {
