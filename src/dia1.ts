@@ -1,7 +1,7 @@
 import {readFile} from 'fs/promises'
 
 async function main(part:1|2) {
-  const data = await readFile("input.txt", "utf8")
+  const data = await readFile("./inputs/1.txt", "utf8")
 
   const array = data.split("\n\n")
 
