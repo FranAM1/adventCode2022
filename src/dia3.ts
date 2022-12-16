@@ -15,9 +15,9 @@ async function main(part: 1 | 2) {
             let firstComp = rucksack.substring(0, rucksack.length / 2);
             let secondComp = rucksack.substring(rucksack.length / 2, rucksack.length);
             let charArray: string[] = []
-            
-            for(let char of firstComp){
-                if(secondComp.includes(char) && !charArray.includes(char)){
+
+            for (let char of firstComp) {
+                if (secondComp.includes(char) && !charArray.includes(char)) {
                     charArray.push(char)
                 }
             }
@@ -30,13 +30,37 @@ async function main(part: 1 | 2) {
 
         // PARTE 2
     } else {
+        let counter = 0
+        let packRucksack: string[][] = []
+        let arrayRucksack: string[] = []
+
         input.forEach((rucksack) => {
-            let packRucksack = rucksack.split(" ")
+            arrayRucksack.push(rucksack)
+            counter++
+            if (counter == 3) {
+                packRucksack.push(arrayRucksack)
+                arrayRucksack = []
+                counter = 0
+            }
         })
 
+        for (let rucksack of packRucksack) {    
+            let charArray: string[] = []
+            if (rucksack[0] != null) {
+                for (let char of rucksack[0]) {
+                    if (rucksack[1]?.includes(char) && rucksack[2]?.includes(char) && !charArray.includes(char)) {
+                        charArray.push(char)
+                    }
+                }
+            }
+
+            charArray.forEach((char) => {
+                result += priorty.indexOf(char) + 1
+            })
+        }
     }
 
     console.log(result)
 }
 
-main(1);
+main(2);
